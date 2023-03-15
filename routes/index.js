@@ -12,7 +12,7 @@ var messages = {
   success: true,
 };
 
-router.put("/update/id", (req, res) => {
+router.put("/update/:id", (req, res) => {
   const input = req.body;
 
   if (input?.email && input?.firstName) {
@@ -43,6 +43,24 @@ router.post("/add", (req, res) => {
 
 router.get("/update/:id", (req, res) => {
   res.json({ success: true, user });
+});
+router.get("/users", (req, res) => {
+  res.json({
+    message: "Users retrieved",
+    success: true,
+    users: [
+      {
+        email: "abc@abc.ca",
+        firstName: "ABC",
+        id: "5abf6783",
+      },
+      {
+        email: "xyz@xyz.ca",
+        firstName: "XYZ",
+        id: "5abf674563",
+      },
+    ],
+  });
 });
 
 module.exports = router;
